@@ -60,9 +60,12 @@ const newsList = [
 export default function News(props) {
   const [newsListUpdate, setNewsListUpdate] = useState(newsList); // 使用useState钩子，初始化newsListUpdate为newsList
 
-  const removeItemFromArray = (id) => {
-    const newArr = newsListUpdate?.filter((item, index) => item?.id !== id); // 过滤出id不等于传入id的元素，生成新数组
-    // console.log("newArr:", newArr);
+  const removeItemFromArray = (clickeditem) => {
+    const newArr = newsListUpdate?.filter(
+      (item, index) => item?.id !== clickeditem.id
+    ); // 过滤出id不等于传入id的元素，生成新数组
+    console.log("newArr:", newArr);
+    console.log("点击的项目:", clickeditem);
     setNewsListUpdate(newArr); // 更新newsListUpdate
   };
   return (
@@ -70,17 +73,19 @@ export default function News(props) {
       <div className={styles.news}>
         <div>
           <Menu />
+
           <div className={styles.newsContents}>
             <div className={styles.newsContentsLeft}>
               {newsListUpdate?.map((item) => (
                 <div key={item.id}>
+                  {/* id可就是 : {item.id} */}
                   {item?.imgSrc?.length > 1 ? (
                     <>
                       <NewsItemTwo
                         imgSrc={item?.imgSrc}
                         title={item?.title}
                         link={item?.link}
-                        removeItemFromArray={() => removeItemFromArray(item.id)}
+                        removeItemFromArray={() => removeItemFromArray(item)}
                       />
                     </>
                   ) : (
@@ -89,7 +94,7 @@ export default function News(props) {
                         imgSrc={item?.imgSrc}
                         title={item?.title}
                         link={item?.link}
-                        removeItemFromArray={() => removeItemFromArray(item.id)}
+                        removeItemFromArray={() => removeItemFromArray(item)}
                       />
                     </>
                   )}

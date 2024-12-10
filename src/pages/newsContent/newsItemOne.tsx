@@ -7,10 +7,13 @@ export default function NewsItemOne({
   link,
   removeItemFromArray,
 }) {
- 
-
+  const [showX, setShowX] = useState(false);
   return (
-    <div className={styles.itemOneWraper}>
+    <div
+      className={styles.itemOneWraper}
+      onMouseEnter={() => setShowX(true)}
+      onMouseLeave={() => setShowX(false)}
+    >
       <div className={styles.imgWraper}>
         {imgSrc?.map((item, index) => (
           <img key={index} src={item} alt="新闻图片" />
@@ -27,8 +30,8 @@ export default function NewsItemOne({
             </a>
             <span className={styles.itemTime}>日期</span>
           </div>
-          <div className={styles.itemPlay}>
-            <span onClick={removeItemFromArray}>X</span>
+          <div className={styles.itemPlay} onClick={removeItemFromArray}>
+            {!!showX && <span className={styles.deleteIcon}>X</span>}
             <span className={styles.smallIcon}>
               <SoundOutlined className={styles.icon} />
             </span>
