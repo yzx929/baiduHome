@@ -1,0 +1,131 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  .leftHeader {
+    //width: 553.66px;
+    height: 60px;
+    line-height: 60px;
+    padding-left: 24px;
+    a {
+      color: #222;
+      text-decoration: none;
+      font:
+        13px / 23px Arial,
+        sans-serif;
+      display: inline-block;
+      margin-right: 24px;
+      &:hover {
+        color: #315efb;
+        text-decoration: none;
+      }
+    }
+    .more {
+      display: inline-block;
+    }
+  }
+  .rightHeader {
+    width: 525.94px;
+    height: 60px;
+    // background-color: #bfa;
+    padding: 0 24px 0 200px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .weatherWraper {
+      // background-color: yellow;
+      width: 119.47px;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      &:hover{
+        cursor: pointer;
+        span{
+          color: #315efb;
+        }
+
+      }
+      // .linkWrap:hover {
+      //   cursor: pointer;
+      //   span{
+      //     color: #315efb;
+      //   }
+      // }
+      a {
+        display: inline-block;
+        display: flex;
+        align-items: center;
+        .city {
+          margin-right: 8px;
+        }
+        img {
+          width: 23px;
+          height: 23px;
+          margin-right: 4px;
+        }
+      }
+      .polutionWraper {
+        font-size: 12px;
+        width: 23px;
+        height: 23px;
+        line-height: 23px;
+        text-align: center;
+        .polutionColor {
+          background-color: #40c057;
+          border-radius: 9px;
+          padding: 0 6px;
+          .polution {
+            color: rgb(255, 255, 255);
+          }
+        }
+      }
+    }
+    .setting {
+      background-color: white;
+      font-size: 13px;
+      display: inline-block;
+      margin-left: 19px;
+      &:hover {
+        cursor:pointer;
+        color: #315efb;
+      }
+    }
+    .userWraper {
+      // background-color: #dcdde4;
+      font-size: 12px;
+      display: inline-block;
+      height: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 0 0 24px;
+      &:hover{
+        cursor: pointer;
+        .userName {
+          color: #315efb;
+        }
+       
+        // background-color: #bfa;
+      }
+
+      .userImgWraper {
+        width: 30px;
+        height: 30px;
+        border: 1px solid rgb(78, 113, 242);
+        border-radius: 50%;
+        background-color: yellow;
+        padding: 2px;
+        img {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+        }
+      }
+
+      .userName {
+        display: inline-block;
+        margin-left: 6px;
+      }
+    }
+  }
+}

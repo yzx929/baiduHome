@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "author": "liaoweibin_user <1039872983@qq.com>",
+  "scripts": {
+    "dev": "umi dev",
+    "build": "umi build",
+    "postinstall": "umi setup",
+    "setup": "umi setup",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.4.0",
+    "antd": "^5.20.6",
+    "axios": "^1.7.8",
+    "less": "^4.2.0",
+    "less-loader": "^12.2.0",
+    "umi": "^4.3.19"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.33",
+    "@types/react-dom": "^18.0.11",
+    "mockjs": "^1.1.0",
+    "typescript": "^5.0.3"
+  }
+}

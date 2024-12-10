@@ -1,0 +1,48 @@
+Arguments: 
+  D:\software\nodejs\node\node.exe C:\Users\root\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add axios
+
+PATH: 
+  C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;D:\software\nodejs\node\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;D:\weiweiwork\git\cmd;C:\Users\root\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Java\jre1.8.0_361\bin;C:\Program Files\Java\jre1.8.0_361\jre\bin;C:\Users\root\.dotnet\tools;D:\software\vscode\bin;C:\Users\root\AppData\Roaming\npm
+
+Yarn version: 
+  1.22.11
+
+Node version: 
+  20.11.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'D:\qianduan_learn\learn\my-second-umi\node_modules\@esbuild\win32-x64\esbuild.exe'
+
+npm manifest: 
+  {
+    "private": true,
+    "author": "liaoweibin_user <1039872983@qq.com>",
+    "scripts": {
+      "dev": "umi dev",
+      "build": "umi build",
+      "postinstall": "umi setup",
+      "setup": "umi setup",
+      "start": "npm run dev"
+    },
+    "dependencies": {
+      "@ant-design/icons": "^5.4.0",
+      "antd": "^5.20.6",
+      "less": "^4.2.0",
+      "less-loader": "^12.2.0",
+      "umi": "^4.3.19"
+    },
+    "devDependencies": {
+      "@types/react": "^18.0.33",
+      "@types/react-dom": "^18.0.11",
+      "typescript": "^5.0.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
