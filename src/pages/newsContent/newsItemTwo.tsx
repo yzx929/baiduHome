@@ -3,7 +3,7 @@ import styles from "./newsItemTwo.less";
 import { SoundOutlined } from "@ant-design/icons";
 export default function NewsItemTwo(props) {
   console.log("props", props);
-  const { title, imgSrc, link } = props;
+  const { title, imgSrc, link, removeItemFromArray } = props;
   return (
     <div className={styles.itemTwo}>
       <a className={styles.itemTwoTitle} href={link}>
@@ -27,6 +27,7 @@ export default function NewsItemTwo(props) {
           <span className={styles.itemTime}>日期</span>
         </div>
         <div className={styles.itemPlay}>
+          <span onClick={removeItemFromArray}>X</span>
           <span className={styles.smallIcon}>
             <SoundOutlined className={styles.icon} />
           </span>

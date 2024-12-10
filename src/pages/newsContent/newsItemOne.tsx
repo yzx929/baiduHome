@@ -1,7 +1,14 @@
 import styles from "./newsItemOne.less";
 import { SoundOutlined } from "@ant-design/icons";
+import React, { useState } from "react";
+export default function NewsItemOne({
+  title,
+  imgSrc,
+  link,
+  removeItemFromArray,
+}) {
+ 
 
-export default function NewsItemOne({ title, imgSrc, link }) {
   return (
     <div className={styles.itemOneWraper}>
       <div className={styles.imgWraper}>
@@ -21,6 +28,7 @@ export default function NewsItemOne({ title, imgSrc, link }) {
             <span className={styles.itemTime}>日期</span>
           </div>
           <div className={styles.itemPlay}>
+            <span onClick={removeItemFromArray}>X</span>
             <span className={styles.smallIcon}>
               <SoundOutlined className={styles.icon} />
             </span>
