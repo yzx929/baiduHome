@@ -1,11 +1,16 @@
 import styles from "./newsItemTwo.less";
-
+import React, { useState } from "react";
 import { SoundOutlined } from "@ant-design/icons";
 export default function NewsItemTwo(props) {
   console.log("props", props);
   const { title, imgSrc, link, removeItemFromArray } = props;
+  const [showX, setShowX] = useState(false);
   return (
-    <div className={styles.itemTwo}>
+    <div
+      className={styles.itemTwo}
+      onMouseEnter={() => setShowX(true)}
+      onMouseLeave={() => setShowX(false)}
+    >
       <a className={styles.itemTwoTitle} href={link}>
         {title}
       </a>
@@ -27,7 +32,7 @@ export default function NewsItemTwo(props) {
           <span className={styles.itemTime}>日期</span>
         </div>
         <div className={styles.itemPlay}>
-          <span onClick={removeItemFromArray}>X</span>
+          {!!showX && <span className={styles.deleteIcon}>X</span>}
           <span className={styles.smallIcon}>
             <SoundOutlined className={styles.icon} />
           </span>
