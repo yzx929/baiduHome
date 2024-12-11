@@ -68,6 +68,17 @@ export default function News(props) {
     console.log("点击的项目:", clickeditem);
     setNewsListUpdate(newArr); // 更新newsListUpdate
   };
+  const addData = () => {
+    //console.log("点击的项目:", clickAddItem);
+    const num = newsListUpdate.length + 1;
+    const addItem = {
+      id: num,
+      title: `测试新闻${num}${num}${num}${num}${num}${num}`,
+      link: "https://gushitong.baidu.com/stock/hk-09888",
+      imgSrc: [img44],
+    };
+    setNewsListUpdate([...newsListUpdate, addItem]); // 更新newsListUpdate
+  };
   return (
     <div className={styles.newsWraper}>
       <div className={styles.news}>
@@ -105,6 +116,7 @@ export default function News(props) {
         </div>
 
         <div className={styles.hotNewsWraper}>
+          <button onClick={addData}>新增新闻</button>
           <HotNewS />
         </div>
       </div>

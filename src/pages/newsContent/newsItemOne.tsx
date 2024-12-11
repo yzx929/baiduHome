@@ -6,6 +6,7 @@ export default function NewsItemOne({
   imgSrc,
   link,
   removeItemFromArray,
+  addDataHandler,
 }) {
   const [showX, setShowX] = useState(false);
   return (
@@ -30,8 +31,13 @@ export default function NewsItemOne({
             </a>
             <span className={styles.itemTime}>日期</span>
           </div>
-          <div className={styles.itemPlay} onClick={removeItemFromArray}>
-            {!!showX && <span className={styles.deleteIcon}>X</span>}
+          <div className={styles.itemPlay}>
+            
+            {!!showX && (
+              <span onClick={removeItemFromArray} className={styles.deleteIcon}>
+                X
+              </span>
+            )}
             <span className={styles.smallIcon}>
               <SoundOutlined className={styles.icon} />
             </span>

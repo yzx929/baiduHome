@@ -32,7 +32,11 @@ export default function NewsItemTwo(props) {
           <span className={styles.itemTime}>日期</span>
         </div>
         <div className={styles.itemPlay}>
-          {!!showX && <span className={styles.deleteIcon}>X</span>}
+          {!!showX && (
+            <span onClick={removeItemFromArray} className={styles.deleteIcon}>
+              X
+            </span>
+          )}
           <span className={styles.smallIcon}>
             <SoundOutlined className={styles.icon} />
           </span>
