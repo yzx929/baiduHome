@@ -1,39 +1,28 @@
 import styles from "./header.less";
+const titleDate = [
+  { title: "新闻", href: "http://news.baidu.com", id: 1 },
+  { title: "hao123", href: "https://www.hao123.com?src=from_pc_logon", id: 2 },
+  { title: "地图", href: "http://map.baidu.com", id: 3 },
+  { title: "贴吧", href: "http://tieba.baidu.com/", id: 4 },
+  { title: "视频", href: "https://haokan.baidu.com/?sfrom=baidu-top", id: 5 },
+  { title: "图片", href: "http://image.baidu.com/", id: 6 },
+  { title: "网盘", href: "https://pan.baidu.com?from=1026962h", id: 7 },
+  { title: "文库", href: "https://wenku.baidu.com/?fr=bdpcindex", id: 8 },
+  { title: "AI助手", href: "https://fanyi.baidu.com/", id: 9 },
+];
 
 export default function Header() {
   return (
     <div className={styles.header}>
       <div className={styles.leftHeader}>
-        <a href="http://news.baidu.com" target="_blank">
-          新闻
-        </a>
-        <a href="https://www.hao123.com?src=from_pc_logon" target="_blank">
-          hao123
-        </a>
-        <a href="http://map.baidu.com" target="_blank">
-          地图
-        </a>
-        <a href="http://tieba.baidu.com/" target="_blank">
-          贴吧
-        </a>
-        <a href="https://haokan.baidu.com/?sfrom=baidu-top" target="_blank">
-          视频
-        </a>
-        <a href="http://image.baidu.com/" target="_blank">
-          图片
-        </a>
-        <a href="https://pan.baidu.com?from=1026962h" target="_blank">
-          网盘
-        </a>
-        <a href="https://wenku.baidu.com/?fr=bdpcindex" target="_blank">
-          文库
-        </a>
-        <a
-          href="https://chat.baidu.com/search?isShowHello=1&amp;pd=csaitab&amp;setype=csaitab&amp;extParamsJson=%7B%22enter_type%22%3A%22home_tab%22%7D"
-          target="_blank"
-        >
-          AI助手
-        </a>
+        {titleDate.map((item) => {
+          return (
+            <a key={item.id} href={item.href} target="_blank">
+              {item.title}
+            </a>
+          );
+        })}
+
         <div className={styles.more}>
           <a href="http://www.baidu.com/more/" target="_blank">
             更多
