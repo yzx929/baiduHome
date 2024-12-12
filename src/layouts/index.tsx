@@ -1,15 +1,21 @@
 import styles from "./index.less";
-
+import React, { useState } from "react";
 
 export default function Layout() {
-  
-
+  const usersDate = [
+    { id: 1, name: "张三", phone: "1234567890", email: "zhangsan@example.com" },
+    { id: 2, name: "李四", phone: "0987654321", email: "lisi@example.com" },
+    { id: 3, name: "王五", phone: "1234567890", email: "zhangsan@example.com" },
+    { id: 4, name: "猪八戒", phone: "0987654321", email: "lisi@example.com" },
+    { id: 1, name: "张三", phone: "1234567890", email: "zhangsan@example.com" },
+    { id: 5, name: "沙和尚", phone: "0987654321", email: "lisi@example.com" },
+  ];
+  const [users, setUsers] = useState(usersDate);
   return (
-    <div>
+    <div className={styles.tableWrapper}>
       <table>
         <thead>
           <tr>
-            <th>序号</th>
             <th>姓名</th>
             <th>电话</th>
             <th>邮箱</th>
@@ -17,46 +23,34 @@ export default function Layout() {
           </tr>
         </thead>
         <tbody>
+          {users.map((item) => (
+            <tr key={item.id}>
+              <td>{item.name}</td>
+              <td>{item.phone}</td>
+              <td>{item.email}</td>
+              <td>
+                <button>删除</button>
+              </td>
+            </tr>
+          ))}
           <tr>
-            <td>1</td>
-            <td>张三</td>
-            <td>13812345678</td>
-            <td>zhangsan@example.com</td>
-            <td>查看</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>李四</td>
-            <td>13987654321</td>
-            <td>lisi@example.com</td>
-            <td>编辑</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>王五</td>
-            <td>13612345678</td>
-            <td>wangwu@example.com</td>
-            <td>删除</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>赵六</td>
-            <td>13712345678</td>
-            <td>zhaoliu@example.com</td>
-            <td>查看</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>孙七</td>
-            <td>13512345678</td>
-            <td>sunqi@example.com</td>
-            <td>编辑</td>
+            <td>
+              <input type="text" />
+            </td>
+            <td>
+              <input type="tel" />
+            </td>
+            <td>
+              <input type="email" />
+            </td>
+            <td>
+              <button>添加</button>
+            </td>
           </tr>
         </tbody>
       </table>
-      <button>名字：{name}</button>
 
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <label for="name">名字:</label>
         <input onChange={changeHandler} type="text" id="name" name="name" />
         <br />
@@ -67,7 +61,7 @@ export default function Layout() {
         <input type="email" id="email" name="email" />
         <br />
         <input type="submit" value="提交" />
-      </form>
+      </form> */}
     </div>
   );
 }
