@@ -1,29 +1,51 @@
-import styles from "./index.less";
-import React, { useState } from "react";
-import { Form, Input, Button } from "antd";
+import styles from './index.less';
+import React, { useState } from 'react';
+import { Form, Input, Button, Table } from 'antd';
 
 export default function Layout() {
   const usersDate = [
-    { id: 1, name: "张三", phone: "1234567890", email: "zhangsan@example.com" },
-    { id: 2, name: "李四", phone: "0987654321", email: "lisi@example.com" },
-    { id: 3, name: "王五", phone: "1234567890", email: "zhangsan@example.com" },
-    { id: 4, name: "猪八戒", phone: "0987654321", email: "lisi@example.com" },
-    { id: 5, name: "沙和尚", phone: "0987654321", email: "lisi@example.com" },
+    { id: 1, name: '张三', phone: '1234567890', email: 'zhangsan@example.com' },
+    { id: 2, name: '李四', phone: '0987654321', email: 'lisi@example.com' },
+    { id: 3, name: '王五', phone: '1234567890', email: 'zhangsan@example.com' },
+    { id: 4, name: '猪八戒', phone: '0987654321', email: 'lisi@example.com' },
+    { id: 5, name: '沙和尚', phone: '0987654321', email: 'lisi@example.com' },
   ];
   const [users, setUsers] = useState(usersDate);
-  const onFinish = (values) => {
-    const newUserItem = {
-      id: users.length + 1,
-      name: values?.name,
-      phone: values?.phone,
-      email: values?.email,
-    };
+  const [columEditIdex, setColumEditIdex] = useState(-1); //-1表示没有编辑,没有一项被编辑，用于跟踪当前正在编辑的行索引。
 
-    // const pushUsers = [...users]
-    // pushUsers.push(newUserItem)
-    const newUsers = [...users];
-    console.log("newUsers:",newUsers);
-    newUsers.push(newUserItem);
+  const [form] = Form.useForm(); // 创建 Form 实例
+
+  const onFinish = (values) => {
+    if (columEditIdex !== -1) {
+      const editItem = users.find((item, index) => index === columEditIdex);
+      const shuxing = `name_${editItem?.id}`;
+      const newEditItem = {
+        id: editItem?.id,
+        name: values?.[`name_${editItem?.id}`],
+        phone: values?.[`phone_${editItem?.id}`],
+        email: values?.[`email_${editItem?.id}`],
+      };
+      const newUsers = [...users];
+      newUsers[columEditIdex] = newEditItem;
+      setUsers(newUsers);
+      setColumEditIdex(-1);
+    } else {
+      const newUserItem = {
+        id: users.length + 1,
+        name: values?.name,
+        phone: values['phone'],
+        email: values?.email,
+      };
+      console.log('values: ', values);
+      const newUsers = [...users];
+      newUsers.push(newUserItem);
+      setUsers(newUsers);
+    }
+
+    form?.resetFields();
+  };
+  const deleteUser = (id) => {
+    const newUsers = users.filter((item) => item.id !== id);
     setUsers(newUsers);
   };
   return (
@@ -31,6 +53,7 @@ export default function Layout() {
       <Form
         onFinish={onFinish} // 表单提交时触发
         layout="vertical"
+        form={form}
       >
         <table>
           <thead>
@@ -42,22 +65,71 @@ export default function Layout() {
             </tr>
           </thead>
           <tbody>
-            {users.map((item) => (
+            {users.map((item, index) => (
               <tr key={item.id}>
-                <td>{item.name}</td>
-                <td>{item.phone}</td>
-                <td>{item.email}</td>
+                {columEditIdex === index ? (
+                  <td>
+                    <Form.Item
+                      name={`name_${item?.id}`}
+                      initialValue={item.name}
+                    >
+                      <Input />
+                    </Form.Item>
+                  </td>
+                ) : (
+                  <td>{item.name}</td>
+                )}
+
+                {columEditIdex === index ? (
+                  <td>
+                    <Form.Item
+                      name={`phone_${item?.id}`}
+                      initialValue={item.phone}
+                    >
+                      <Input />
+                    </Form.Item>
+                  </td>
+                ) : (
+                  <td>{item.phone}</td>
+                )}
+                {columEditIdex === index ? (
+                  <td>
+                    <Form.Item
+                      name={`email_${item?.id}`}
+                      initialValue={item.email}
+                    >
+                      <Input />
+                    </Form.Item>
+                  </td>
+                ) : (
+                  <td>{item.email}</td>
+                )}
+
                 <td>
-                  <button>删除</button>
+                  <Button
+                    onClick={() => {
+                      deleteUser(item.id);
+                    }}
+                  >
+                    删除
+                  </Button>
+
+                  <Button
+                    onClick={() =>
+                      columEditIdex === index
+                        ? form?.submit?.()
+                        : setColumEditIdex(index)
+                    }
+                    style={{ marginLeft: '10px' }}
+                  >
+                    {columEditIdex === index ? '提交' : '修改'}
+                  </Button>
                 </td>
               </tr>
             ))}
             <tr>
               <td>
-                <Form.Item
-                  name="name"
-                  //rules={[{ required: true, message: "请输入名字!" }]}
-                >
+                <Form.Item name="name">
                   <Input />
                 </Form.Item>
               </td>
@@ -76,7 +148,7 @@ export default function Layout() {
                   <Button
                     type="primary"
                     htmlType="submit"
-                    style={{ color: "#fff" }}
+                    style={{ color: '#fff' }}
                   >
                     添加
                   </Button>
